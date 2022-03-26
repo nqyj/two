@@ -6,8 +6,9 @@ import org.apache.spark.sql.SparkSession
 import redis.clients.jedis.Jedis
 
 object AnalyseToRedis {
-  // https://github.com/nqyj/one.git
   def main(args: Array[String]): Unit = {
+
+
     if (args.length != 1) {
       println(
         """
@@ -17,7 +18,8 @@ object AnalyseToRedis {
       sys.exit()
     }
 
-    println()
+    var a = 1
+    var b =1
     // 创建sparksession对象
     var conf = new SparkConf().set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
     val spark = SparkSession.builder().config(conf).appName("AnalyseToRedis").master("local[1]").getOrCreate()
