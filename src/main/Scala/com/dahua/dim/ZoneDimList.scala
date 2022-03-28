@@ -27,6 +27,7 @@ object ZoneDimList {
     var Array(intputpath,outputpath) = args
     //读取数据
     val dfpath: DataFrame = spark.read.parquet(intputpath)
+
     //获取字段
     val dimRdd: Dataset[((String, String), List[Double])] = dfpath.map(row => {
       val requestmode: Int = row.getAs[Int]("requestmode")

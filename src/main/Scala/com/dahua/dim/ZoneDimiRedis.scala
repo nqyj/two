@@ -38,11 +38,11 @@ object ZoneDimiRedis {
         //判断名字 ，如果为空，则从redis中获取值
         if(appname ==" " || appname.isEmpty) {
           val jedis: Jedis = RedisUtil.getJedis
-//          if(jedis.get(line.appid)!=null||jedis.get(line.appid).nonEmpty) {
+          if(jedis.get(line.appid)!=null && jedis.get(line.appid).nonEmpty) {
            appname =jedis.get(line.appid)
-//          }else{
-//            appname ="不确定"
-//          }
+          }else{
+            appname ="不确定"
+          }
         }
         val qqs: List[Double] = Dimzhibiao.qqsRtp(line.requestmode, line.processnode)
         (appname,qqs)
